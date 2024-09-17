@@ -1,6 +1,6 @@
 # Changelog
 
-## <small>19.1.01 (2024-09-17)</small>
+## <small>19.1.1 (2024-09-17)</small>
 
 * [bitnami/contour] extend dns names for contour & envoy using cert-manager to replicate certgen ([#29416](https://github.com/bitnami/charts/pull/29416))
 

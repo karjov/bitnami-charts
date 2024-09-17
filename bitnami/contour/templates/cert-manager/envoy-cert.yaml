@@ -13,10 +13,10 @@ spec:
   secretName: {{ printf "%s-envoy-crt" (include "common.names.fullname" .) }}
   commonName: "envoy"
   dnsNames:
-    - "envoy"
-    - "envoy.{{ include "common.names.namespace" . }}"
-    - "envoy.{{ include "common.names.namespace" . }}.svc"
-    - "envoy.{{ include "common.names.namespace" . }}.svc.cluster.local"
+    - {{ printf "%s-envoy" (include "common.names.fullname" .) | trunc 63 | trimSuffix "-" | quote}}
+    - "{{ printf "%s-envoy" (include "common.names.fullname" .) | trunc 63 | trimSuffix "-" }}.{{ include "common.names.namespace" . }}"
+    - "{{ printf "%s-envoy" (include "common.names.fullname" .) | trunc 63 | trimSuffix "-" }}.{{ include "common.names.namespace" . }}.svc"
+    - "{{ printf "%s-envoy" (include "common.names.fullname" .) | trunc 63 | trimSuffix "-" }}.{{ include "common.names.namespace" . }}.svc.cluster.local"
   issuerRef:
     name: {{ include "common.names.fullname" . | quote }}
     kind: Issuer

@@ -13,10 +13,10 @@ spec:
   secretName: {{ printf "%s-contour-crt" (include "common.names.fullname" .) }}
   commonName: "contour"
   dnsNames:
-    - "contour"
-    - "contour.{{ include "common.names.namespace" . }}"
-    - "contour.{{ include "common.names.namespace" . }}.svc"
-    - "contour.{{ include "common.names.namespace" . }}.svc.cluster.local"
+    - {{ include "common.names.fullname" . | quote }}
+    - "{{ include "common.names.fullname" . }}.{{ include "common.names.namespace" . }}"
+    - "{{ include "common.names.fullname" . }}.{{ include "common.names.namespace" . }}.svc"
+    - "{{ include "common.names.fullname" . }}.{{ include "common.names.namespace" . }}.svc.cluster.local"
   issuerRef:
     name: {{ include "common.names.fullname" . | quote }}
     kind: Issuer
